@@ -80,7 +80,7 @@ El modelo permite analizar patrones de uso, comportamiento de los usuarios, acti
 ## 7. Estructura del repositorio
 
 ```text
-citibike-data-engineering/
+citibike_dbx/
 │
 ├── README.md
 │
