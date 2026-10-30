@@ -60,8 +60,10 @@ La capa Gold implementa un modelo dimensional orientado al análisis de los tray
 |---|---|
 | `dim_time` | Información temporal: año, mes, día, día de la semana y hora. |
 | `dim_station` | Información de las estaciones de origen y destino. |
-| `dim_bike` | Información relacionada con las bicicletas. |
-| `dim_rider` | Clasificación de los usuarios según su tipo. |
+| `dim_bike_type` | Información relacionada con las bicicletas. |
+| `dim_member_type` | Clasificación de los usuarios según su tipo. |
+
+     
 
 El modelo permite analizar patrones de uso, comportamiento de los usuarios, actividad de las estaciones y tendencias temporales.
 
