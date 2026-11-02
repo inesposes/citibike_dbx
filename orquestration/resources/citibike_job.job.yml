@@ -1,0 +1,48 @@
+resources:
+  jobs:
+    citibike_job:
+      name: citibike_job
+      tasks:
+        - task_key: bronze_layer
+          disabled: false
+          email_notifications: {}
+          notebook_task:
+            notebook_path: ../src/citibike_job/01_bronze/ingestion.ipynb
+            source: WORKSPACE
+          run_if: ALL_SUCCESS
+          timeout_seconds: 0
+          webhook_notifications: {}
+        - task_key: silver_layer
+          depends_on:
+            - task_key: bronze_layer
+          disabled: false
+          email_notifications: {}
+          notebook_task:
+            notebook_path: ../src/citibike_job/02_silver/cleaning.ipynb
+            source: WORKSPACE
+          run_if: ALL_SUCCESS
+          timeout_seconds: 0
+          webhook_notifications: {}
+        - task_key: gold_layer
+          depends_on:
+            - task_key: silver_layer
+          disabled: false
+          email_notifications: {}
+          notebook_task:
+            notebook_path: ../src/citibike_job/03_gold/gold_modelling.ipynb
+            source: WORKSPACE
+          run_if: ALL_SUCCESS
+          timeout_seconds: 0
+      email_notifications:
+        no_alert_for_skipped_runs: false
+      max_concurrent_runs: 1
+      performance_target: PERFORMANCE_OPTIMIZED
+      queue:
+        enabled: true
+      timeout_seconds: 0
+      trigger:
+        pause_status: UNPAUSED
+        periodic:
+          interval: 1
+          unit: DAYS
+      webhook_notifications: {}
